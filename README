@@ -1,0 +1,21 @@
+Developped for REACH (Radio Experiment for the Analysis of Cosmic Hydrogen) telescope project
+https://www.astro.phy.cam.ac.uk/research/research-projects/reach/overview
+
+Dedicated for Arduino DUE, but should be easily ported to other arduino platform.
+
+Things to control:
+
+Two transfer switch
+One 8-way RF switch
+Two 6-way RF switch
+One 2-way RF switch
+One peltier device
+One temperature sensor
+
+...
+
+list goes on
+
+
+Based on work from Mads Aasvik, original link available from here:
+https://www.norwegiancreations.com/2018/02/creating-a-command-line-interface-in-arduinos-serial-monitor/
