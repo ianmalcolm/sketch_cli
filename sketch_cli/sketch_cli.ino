@@ -8,6 +8,7 @@
 #include "gpio.h"
 #include "help.h"
 #include "exit.h"
+#include "pwm.h"
 
 #define LINE_BUF_SIZE 128   //Maximum input string length
 #define ARG_BUF_SIZE 64     //Maximum argument string length
@@ -19,6 +20,7 @@ char args[MAX_NUM_ARGS][ARG_BUF_SIZE];
 CMD cmds[] = {
     cmd_led,
     cmd_gpio,
+    cmd_pwm,
     cmd_help,
     cmd_exit
 };
