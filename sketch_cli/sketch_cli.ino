@@ -9,6 +9,7 @@
 #include "help.h"
 #include "exit.h"
 #include "pwm.h"
+#include "temp.h"
 
 #define LINE_BUF_SIZE 128   //Maximum input string length
 #define ARG_BUF_SIZE 64     //Maximum argument string length
@@ -21,6 +22,7 @@ CMD cmds[] = {
     cmd_led,
     cmd_gpio,
     cmd_pwm,
+    cmd_temp,
     cmd_help,
     cmd_exit
 };
@@ -49,7 +51,6 @@ void setup() {
     Serial.begin(115200);
 
     for (int i=0; i<ncmd; i++) {
-        //Serial.println(i);
         cmds[i].init();
     }
 
