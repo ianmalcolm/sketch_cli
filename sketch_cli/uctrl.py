@@ -12,6 +12,10 @@ class Microcontroller:
         self._itf = itf
         self.logger = kwargs.get('logger', logging.getLogger(__name__))
         self.logger.setLevel(kwargs.get('loggerlevel', logging.WARNING))
+        self.term = kwargs.get('term', '\n')
+        self.timeout = kwargs.get('timeout', 0.5)
+
+        self._itf.timeout = self.timeout
 
         self.logger.info('Interface info: {}'.format(self._itf.name))
 
@@ -20,14 +24,16 @@ class Microcontroller:
 
     def _write(self, cmd):
         assert isinstance(cmd, str)
-        self._itf.write(cmd)
+        self._itf.write(cmd + self.term)
 
-    def _read(self):
+    def _read_all(self):
         return self._itf.read_all()
 
+    def _readline(self):
+        return self._itf.readline()
+
     def is_alive(self):
-        ret = self.get('help')
-        return 'help' in ret
+        return 'The following commands are available:' == self.get('help').strip()
 
     def exit(self):
         """
@@ -37,10 +43,9 @@ class Microcontroller:
 
     def set(self, cmd):
         self._write(cmd)
-        time.sleep(2)
 
     def get(self, cmd):
+        self._read_all()
         self._write(cmd)
-        time.sleep(2)
-        return self._read()
+        return self._readline()
 
