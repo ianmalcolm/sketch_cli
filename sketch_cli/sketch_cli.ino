@@ -67,7 +67,7 @@ void cli_init() {
 }
 
 void my_cli() {
-    Serial.print("> ");
+//    Serial.print("> ");
 
     read_line();
     if (!error_flag) {
@@ -92,7 +92,7 @@ void read_line() {
         line_string = Serial.readStringUntil('\n');
         if (line_string.length() < LINE_BUF_SIZE) {
             line_string.toCharArray(line, LINE_BUF_SIZE);
-            Serial.println(line_string);
+//            Serial.println(line_string);
         }
         else {
             Serial.println("Input string too long.");
